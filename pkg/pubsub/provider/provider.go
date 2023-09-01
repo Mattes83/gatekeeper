@@ -2,13 +2,15 @@ package provider
 
 import (
 	"context"
+	"github.com/open-policy-agent/gatekeeper/v3/pkg/pubsub/rabbitmq"
 
 	"github.com/open-policy-agent/gatekeeper/v3/pkg/pubsub/connection"
 	"github.com/open-policy-agent/gatekeeper/v3/pkg/pubsub/dapr"
 )
 
 var pubSubs = newPubSubSet(map[string]InitiateConnection{
-	dapr.Name: dapr.NewConnection,
+	dapr.Name:     dapr.NewConnection,
+	rabbitmq.Name: rabbitmq.NewConnection,
 },
 )
 
